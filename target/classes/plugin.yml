@@ -1,0 +1,27 @@
+name: ArmorUp
+version: '1.0-SNAPSHOT'
+main: me.detonario.armorup.ArmorUp
+api-version: '1.21.1'
+authors: [ Detonario ]
+description: New armor, bows and swords - equip yourself for battle with this exciting equipment!
+commands:
+  au:
+    usage: "/au"
+    aliases: [ armorup ]
+    permission: armorup.permission.command
+permissions:
+  armorup.permission.admin:
+    description: "Administrator permissions"
+    default: op
+  armorup.permission.command:
+    description: "Permission for accessing the help list"
+    default: true
+  armorup.permission.armor:
+    description: "Permission for crafting new armor"
+    default: op
+  armorup.permission.bow:
+    description: "Permission for crafting new bows"
+    default: op
+  armorup.permission.sword:
+    description: "Permission for crafting new swords"
+    default: op
