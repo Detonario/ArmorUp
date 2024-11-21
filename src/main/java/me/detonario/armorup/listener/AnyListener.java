@@ -116,7 +116,7 @@ public final class AnyListener implements Listener {
 
             if (item.getPersistentDataContainer().has(Keys.ELECTRIC_SWORD, PersistentDataType.BOOLEAN)) {
                 Entity entity2 = initialLoc.getNearbyLivingEntities(3).stream()
-                        .filter(entity -> entity != null && entity != livingEntity1)
+                        .filter(entity -> entity != null && entity != player && entity != livingEntity1)
                         .findFirst().orElse(null);
                 player.playSound(playerLoc, Sound.BLOCK_REDSTONE_TORCH_BURNOUT, 0.5F, 1);
 
@@ -128,7 +128,7 @@ public final class AnyListener implements Listener {
                         createElectricSparkEffect(initialLoc, loc1);
 
                         Entity entity3 = loc1.getNearbyLivingEntities(3).stream()
-                                .filter(entity -> entity != null && entity != livingEntity2 && entity != livingEntity1)
+                                .filter(entity -> entity != null && entity != player && entity != livingEntity2 && entity != livingEntity1)
                                 .findFirst().orElse(null);
                         player.playSound(playerLoc, Sound.BLOCK_REDSTONE_TORCH_BURNOUT, 0.5f, 1);
 
@@ -140,7 +140,7 @@ public final class AnyListener implements Listener {
                                 createElectricSparkEffect(loc1, loc2);
 
                                 Entity entity4 = loc2.getNearbyLivingEntities(3).stream()
-                                        .filter(entity -> entity != null && entity != livingEntity3 && entity != livingEntity2 && entity != livingEntity1)
+                                        .filter(entity -> entity != null && entity != player && entity != livingEntity3 && entity != livingEntity2 && entity != livingEntity1)
                                         .findFirst().orElse(null);
                                 player.playSound(playerLoc, Sound.BLOCK_REDSTONE_TORCH_BURNOUT, 0.5F, 1);
 
