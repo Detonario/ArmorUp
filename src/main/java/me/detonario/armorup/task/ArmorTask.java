@@ -18,6 +18,8 @@ public final class ArmorTask implements Runnable {
 
     private static final ArmorTask instance = new ArmorTask();
 
+    private final ArmorListener armorInstance = ArmorListener.getInstance();
+
     private final Set<UUID> copperPlayers = new HashSet<>();
 
     private final Map<UUID, BukkitTask> redstoneEffects = new HashMap<>();
@@ -30,13 +32,12 @@ public final class ArmorTask implements Runnable {
 
     @Override
     public void run() {
-        ArmorListener instance = ArmorListener.getInstance();
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             UUID uuid = player.getUniqueId();
 
 
-            if ("sponge".equals(instance.getWornSet(player))) {
+            if ("sponge".equals(armorInstance.getWornSet(player))) {
                 Location playerLocation = player.getLocation();
 
                 for (int x = -4; x <= 4; x++) {
@@ -55,7 +56,7 @@ public final class ArmorTask implements Runnable {
                 }
 
 
-            } else if ("copper".equals(instance.getWornSet(player)) && !copperPlayers.contains(uuid)) {
+            } else if ("copper".equals(armorInstance.getWornSet(player)) && !copperPlayers.contains(uuid)) {
                 if (player.getWorld().isThundering()) {
                     copperPlayers.add(uuid);
 
@@ -77,14 +78,14 @@ public final class ArmorTask implements Runnable {
                 }
 
 
-            } else if ("redstone".equals(instance.getWornSet(player)) && player.getInventory().contains(Material.REDSTONE)
+            } else if ("redstone".equals(armorInstance.getWornSet(player)) && player.getInventory().contains(Material.REDSTONE)
                     && !redstoneEffects.containsKey(uuid) && !redstoneRemovals.containsKey(uuid)) {
 
                 BukkitTask task1 = new BukkitRunnable() {
 
                     @Override
                     public void run() {
-                        if (!"redstone".equals(instance.getWornSet(player))) {
+                        if (!"redstone".equals(armorInstance.getWornSet(player))) {
                             redstoneEffects.get(uuid).cancel();
                             redstoneRemovals.get(uuid).cancel();
 
@@ -151,7 +152,7 @@ public final class ArmorTask implements Runnable {
                 redstoneRemovals.put(uuid, task2);
 
 
-            } else if ("flint".equals(instance.getWornSet(player)) && player.isSneaking()) {
+            } else if ("flint".equals(armorInstance.getWornSet(player)) && player.isSneaking()) {
                 Location playerLocation = player.getLocation();
                 Block blockBelowPlayer = playerLocation.clone().add(0, -1, 0).getBlock();
 
@@ -176,7 +177,7 @@ public final class ArmorTask implements Runnable {
                 }
 
 
-            } else if ("amethyst".equals(instance.getWornSet(player))) {
+            } else if ("amethyst".equals(armorInstance.getWornSet(player))) {
                 final Collection<LivingEntity> nearbyEntities = player.getLocation().clone().getNearbyLivingEntities(30);
 
                 for (LivingEntity entity : nearbyEntities) {
@@ -189,7 +190,7 @@ public final class ArmorTask implements Runnable {
                 globalEntityGlowList.removeIf(entity -> {
                     if (!nearbyEntities.contains(entity) && Bukkit.getOnlinePlayers().stream()
                             .noneMatch(p -> p.getLocation().distance(entity.getLocation()) <= 30
-                                    && "amethyst".equals(instance.getWornSet(p)))) {
+                                    && "amethyst".equals(armorInstance.getWornSet(p)))) {
                         entity.setGlowing(false);
                         return true;
                     }

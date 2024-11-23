@@ -40,43 +40,59 @@ public final class AnyListener implements Listener {
 
     private final Map<UUID, Long> airCooldowns = new HashMap<>();
 
+    private final List<Material> blockList = Arrays.asList(
+            Material.COPPER_ORE,
+            Material.COAL_ORE,
+            Material.IRON_ORE,
+            Material.GOLD_ORE,
+            Material.REDSTONE_ORE,
+            Material.LAPIS_ORE,
+            Material.DIAMOND_ORE,
+            Material.EMERALD_ORE,
+
+            Material.DEEPSLATE_COPPER_ORE,
+            Material.DEEPSLATE_COAL_ORE,
+            Material.DEEPSLATE_IRON_ORE,
+            Material.DEEPSLATE_GOLD_ORE,
+            Material.DEEPSLATE_REDSTONE_ORE,
+            Material.DEEPSLATE_LAPIS_ORE,
+            Material.DEEPSLATE_DIAMOND_ORE,
+            Material.DEEPSLATE_EMERALD_ORE,
+
+            Material.NETHER_QUARTZ_ORE,
+            Material.NETHER_GOLD_ORE
+    );
+
+    private final List<Recipe> armorList = Arrays.asList(
+            CustomRecipes.recipeEmerald1, CustomRecipes.recipeEmerald2, CustomRecipes.recipeEmerald3, CustomRecipes.recipeEmerald4,
+            CustomRecipes.recipeObsidian1, CustomRecipes.recipeObsidian2, CustomRecipes.recipeObsidian3, CustomRecipes.recipeObsidian4,
+            CustomRecipes.recipeSponge1, CustomRecipes.recipeSponge2, CustomRecipes.recipeSponge3, CustomRecipes.recipeSponge4,
+            CustomRecipes.recipeCopper1, CustomRecipes.recipeCopper2, CustomRecipes.recipeCopper3, CustomRecipes.recipeCopper4,
+            CustomRecipes.recipeSuperGold1, CustomRecipes.recipeSuperGold2, CustomRecipes.recipeSuperGold3, CustomRecipes.recipeSuperGold4,
+            CustomRecipes.recipeRedstone1, CustomRecipes.recipeRedstone2, CustomRecipes.recipeRedstone3, CustomRecipes.recipeRedstone4,
+            CustomRecipes.recipeFlint1, CustomRecipes.recipeFlint2, CustomRecipes.recipeFlint3, CustomRecipes.recipeFlint4,
+            CustomRecipes.recipeAmethyst1, CustomRecipes.recipeAmethyst2, CustomRecipes.recipeAmethyst3, CustomRecipes.recipeAmethyst4);
+
+    List<Recipe> bowList = Arrays.asList(
+            CustomRecipes.recipeIceBow, CustomRecipes.recipeFireBow, CustomRecipes.recipeTNTBow, CustomRecipes.recipeClusterBow);
+
+    List<Recipe> swordList = Arrays.asList(
+            CustomRecipes.recipeElectricSword, CustomRecipes.recipeAirSword);
+
     private AnyListener() {
     }
 
     @EventHandler
     public void onPlayerBreakBlock(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        Material mat = player.getInventory().getItemInMainHand().getType();
-
-        Block block = event.getBlock();
-        Collection<ItemStack> blockDrop = block.getDrops();
-        Material blockType = block.getType();
-
-
-        List<Material> blockList = new ArrayList<>();
-        blockList.add(Material.COPPER_ORE);
-        blockList.add(Material.COAL_ORE);
-        blockList.add(Material.IRON_ORE);
-        blockList.add(Material.GOLD_ORE);
-        blockList.add(Material.REDSTONE_ORE);
-        blockList.add(Material.LAPIS_ORE);
-        blockList.add(Material.DIAMOND_ORE);
-        blockList.add(Material.EMERALD_ORE);
-
-        blockList.add(Material.DEEPSLATE_COPPER_ORE);
-        blockList.add(Material.DEEPSLATE_COAL_ORE);
-        blockList.add(Material.DEEPSLATE_IRON_ORE);
-        blockList.add(Material.DEEPSLATE_GOLD_ORE);
-        blockList.add(Material.DEEPSLATE_REDSTONE_ORE);
-        blockList.add(Material.DEEPSLATE_LAPIS_ORE);
-        blockList.add(Material.DEEPSLATE_DIAMOND_ORE);
-        blockList.add(Material.DEEPSLATE_EMERALD_ORE);
-
-        blockList.add(Material.NETHER_QUARTZ_ORE);
-        blockList.add(Material.NETHER_GOLD_ORE);
-
 
         if ("emerald".equals(ArmorListener.getInstance().getWornSet(player))) {
+            Material mat = player.getInventory().getItemInMainHand().getType();
+
+            Block block = event.getBlock();
+            Collection<ItemStack> blockDrop = block.getDrops();
+            Material blockType = block.getType();
+
             if (blockList.contains(blockType) && (mat == Material.NETHERITE_PICKAXE || mat == Material.DIAMOND_PICKAXE || mat == Material.IRON_PICKAXE)) {
                 if (!blockDrop.isEmpty()) {
                     ItemStack dropItem = blockDrop.iterator().next();
@@ -242,25 +258,8 @@ public final class AnyListener implements Listener {
 
 
         if (eventRecipe != null) {
-            List<Recipe> armorList = Arrays.asList(
-                    CustomRecipes.recipeEmerald1, CustomRecipes.recipeEmerald2, CustomRecipes.recipeEmerald3, CustomRecipes.recipeEmerald4,
-                    CustomRecipes.recipeObsidian1, CustomRecipes.recipeObsidian2, CustomRecipes.recipeObsidian3, CustomRecipes.recipeObsidian4,
-                    CustomRecipes.recipeSponge1, CustomRecipes.recipeSponge2, CustomRecipes.recipeSponge3, CustomRecipes.recipeSponge4,
-                    CustomRecipes.recipeCopper1, CustomRecipes.recipeCopper2, CustomRecipes.recipeCopper3, CustomRecipes.recipeCopper4,
-                    CustomRecipes.recipeSuperGold1, CustomRecipes.recipeSuperGold2, CustomRecipes.recipeSuperGold3, CustomRecipes.recipeSuperGold4,
-                    CustomRecipes.recipeRedstone1, CustomRecipes.recipeRedstone2, CustomRecipes.recipeRedstone3, CustomRecipes.recipeRedstone4,
-                    CustomRecipes.recipeFlint1, CustomRecipes.recipeFlint2, CustomRecipes.recipeFlint3, CustomRecipes.recipeFlint4,
-                    CustomRecipes.recipeAmethyst1, CustomRecipes.recipeAmethyst2, CustomRecipes.recipeAmethyst3, CustomRecipes.recipeAmethyst4);
-
-            List<Recipe> bowList = Arrays.asList(
-                    CustomRecipes.recipeIceBow, CustomRecipes.recipeFireBow, CustomRecipes.recipeTNTBow, CustomRecipes.recipeClusterBow);
-
-            List<Recipe> swordList = Arrays.asList(
-                    CustomRecipes.recipeElectricSword, CustomRecipes.recipeAirSword);
-
 
             for (Recipe recipe : armorList) {
-
                 if (recipe != null && recipe.getResult().isSimilar(eventRecipe.getResult()) && !player.hasPermission("armorup.permission.armor")) {
                     inventory.setItem(0, null);
                     return;
@@ -268,7 +267,6 @@ public final class AnyListener implements Listener {
             }
 
             for (Recipe recipe : bowList) {
-
                 if (recipe != null && recipe.getResult().isSimilar(eventRecipe.getResult()) && !player.hasPermission("armorup.permission.bow")) {
                     inventory.setItem(0, null);
                     return;
@@ -276,7 +274,6 @@ public final class AnyListener implements Listener {
             }
 
             for (Recipe recipe : swordList) {
-
                 if (recipe != null && recipe.getResult().isSimilar(eventRecipe.getResult()) && !player.hasPermission("armorup.permission.sword")) {
                     inventory.setItem(0, null);
                     return;

@@ -3,7 +3,7 @@ version: '1.0-SNAPSHOT'
 main: me.detonario.armorup.ArmorUp
 api-version: '1.21.1'
 authors: [ Detonario ]
-description: New armor, bows and swords - equip yourself for battle with this exciting equipment!
+description: A Minecraft plugin that introduces new custom armor, bows, and swords.
 commands:
   au:
     usage: "/au"

@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.Collection;
 
-public class ArmorListener implements Listener {
+public final class ArmorListener implements Listener {
 
     private static final ArmorListener instance = new ArmorListener();
 

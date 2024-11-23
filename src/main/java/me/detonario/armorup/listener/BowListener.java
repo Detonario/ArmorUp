@@ -22,7 +22,7 @@ import org.bukkit.util.Vector;
 
 import java.util.Random;
 
-public class BowListener implements Listener {
+public final class BowListener implements Listener {
 
     private static final BowListener instance = new BowListener();
 

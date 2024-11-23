@@ -22,6 +22,8 @@ import java.util.*;
 
 public final class ArmorUpCommand implements CommandExecutor, TabExecutor {
 
+    private final YamlConfiguration config = Settings.getInstance().getConfig();
+
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     private static final Map<UUID, PermissionAttachment> armorPermissions = new HashMap<>();
@@ -63,8 +65,6 @@ public final class ArmorUpCommand implements CommandExecutor, TabExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-
-        final YamlConfiguration config = Settings.getInstance().getConfig();
 
         if (!(sender instanceof Player player)) {
             sender.sendMessage("This command is for players only!");

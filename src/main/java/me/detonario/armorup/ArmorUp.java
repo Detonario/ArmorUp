@@ -25,7 +25,7 @@ public final class ArmorUp extends JavaPlugin {
         getServer().getPluginManager().registerEvents(ArmorListener.getInstance(), this);
         getServer().getPluginManager().registerEvents(BowListener.getInstance(), this);
 
-        Bukkit.getScheduler().runTaskLater(this, () -> Objects.requireNonNull(getCommand("au")).setExecutor(new ArmorUpCommand()), 4);
+        Bukkit.getScheduler().runTaskLater(this, () -> Objects.requireNonNull(getCommand("au")).setExecutor(new ArmorUpCommand()), 5);
 
         Settings.getInstance().load();
 
