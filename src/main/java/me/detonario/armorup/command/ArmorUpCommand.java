@@ -22,9 +22,9 @@ import java.util.*;
 
 public final class ArmorUpCommand implements CommandExecutor, TabExecutor {
 
-    private final YamlConfiguration config = Settings.getInstance().getConfig();
-
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
+
+    private final YamlConfiguration config = Settings.getInstance().getConfig();
 
     private static final Map<UUID, PermissionAttachment> armorPermissions = new HashMap<>();
     private static final Map<UUID, PermissionAttachment> bowPermissions = new HashMap<>();

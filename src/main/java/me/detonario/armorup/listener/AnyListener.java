@@ -63,21 +63,6 @@ public final class AnyListener implements Listener {
             Material.NETHER_GOLD_ORE
     );
 
-    private final List<Recipe> armorList = Arrays.asList(
-            CustomRecipes.recipeEmerald1, CustomRecipes.recipeEmerald2, CustomRecipes.recipeEmerald3, CustomRecipes.recipeEmerald4,
-            CustomRecipes.recipeObsidian1, CustomRecipes.recipeObsidian2, CustomRecipes.recipeObsidian3, CustomRecipes.recipeObsidian4,
-            CustomRecipes.recipeSponge1, CustomRecipes.recipeSponge2, CustomRecipes.recipeSponge3, CustomRecipes.recipeSponge4,
-            CustomRecipes.recipeCopper1, CustomRecipes.recipeCopper2, CustomRecipes.recipeCopper3, CustomRecipes.recipeCopper4,
-            CustomRecipes.recipeSuperGold1, CustomRecipes.recipeSuperGold2, CustomRecipes.recipeSuperGold3, CustomRecipes.recipeSuperGold4,
-            CustomRecipes.recipeRedstone1, CustomRecipes.recipeRedstone2, CustomRecipes.recipeRedstone3, CustomRecipes.recipeRedstone4,
-            CustomRecipes.recipeFlint1, CustomRecipes.recipeFlint2, CustomRecipes.recipeFlint3, CustomRecipes.recipeFlint4,
-            CustomRecipes.recipeAmethyst1, CustomRecipes.recipeAmethyst2, CustomRecipes.recipeAmethyst3, CustomRecipes.recipeAmethyst4);
-
-    List<Recipe> bowList = Arrays.asList(
-            CustomRecipes.recipeIceBow, CustomRecipes.recipeFireBow, CustomRecipes.recipeTNTBow, CustomRecipes.recipeClusterBow);
-
-    List<Recipe> swordList = Arrays.asList(
-            CustomRecipes.recipeElectricSword, CustomRecipes.recipeAirSword);
 
     private AnyListener() {
     }
@@ -258,6 +243,22 @@ public final class AnyListener implements Listener {
 
 
         if (eventRecipe != null) {
+
+            final List<Recipe> armorList = Arrays.asList(
+                    CustomRecipes.recipeEmerald1, CustomRecipes.recipeEmerald2, CustomRecipes.recipeEmerald3, CustomRecipes.recipeEmerald4,
+                    CustomRecipes.recipeObsidian1, CustomRecipes.recipeObsidian2, CustomRecipes.recipeObsidian3, CustomRecipes.recipeObsidian4,
+                    CustomRecipes.recipeSponge1, CustomRecipes.recipeSponge2, CustomRecipes.recipeSponge3, CustomRecipes.recipeSponge4,
+                    CustomRecipes.recipeCopper1, CustomRecipes.recipeCopper2, CustomRecipes.recipeCopper3, CustomRecipes.recipeCopper4,
+                    CustomRecipes.recipeSuperGold1, CustomRecipes.recipeSuperGold2, CustomRecipes.recipeSuperGold3, CustomRecipes.recipeSuperGold4,
+                    CustomRecipes.recipeRedstone1, CustomRecipes.recipeRedstone2, CustomRecipes.recipeRedstone3, CustomRecipes.recipeRedstone4,
+                    CustomRecipes.recipeFlint1, CustomRecipes.recipeFlint2, CustomRecipes.recipeFlint3, CustomRecipes.recipeFlint4,
+                    CustomRecipes.recipeAmethyst1, CustomRecipes.recipeAmethyst2, CustomRecipes.recipeAmethyst3, CustomRecipes.recipeAmethyst4);
+
+            final List<Recipe> bowList = Arrays.asList(
+                    CustomRecipes.recipeIceBow, CustomRecipes.recipeFireBow, CustomRecipes.recipeTNTBow, CustomRecipes.recipeClusterBow);
+
+            final List<Recipe> swordList = Arrays.asList(
+                    CustomRecipes.recipeElectricSword, CustomRecipes.recipeAirSword);
 
             for (Recipe recipe : armorList) {
                 if (recipe != null && recipe.getResult().isSimilar(eventRecipe.getResult()) && !player.hasPermission("armorup.permission.armor")) {
