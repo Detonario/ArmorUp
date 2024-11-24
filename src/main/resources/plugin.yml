@@ -18,10 +18,10 @@ permissions:
     default: true
   armorup.permission.armor:
     description: "Permission for crafting new armor"
-    default: false
+    default: op
   armorup.permission.bow:
     description: "Permission for crafting new bows"
-    default: false
+    default: op
   armorup.permission.sword:
     description: "Permission for crafting new swords"
-    default: false
+    default: op
