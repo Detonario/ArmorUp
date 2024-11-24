@@ -25,8 +25,11 @@ import java.util.Random;
 public final class BowListener implements Listener {
 
     private static final BowListener instance = new BowListener();
-
+    
     private int bowCooldown = 20;
+
+    private BowListener() {
+    }
 
     @EventHandler
     public void onBowLaunch(ProjectileLaunchEvent event) {

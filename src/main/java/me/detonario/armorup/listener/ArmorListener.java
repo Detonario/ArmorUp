@@ -17,6 +17,9 @@ public final class ArmorListener implements Listener {
 
     private static final ArmorListener instance = new ArmorListener();
 
+    private ArmorListener() {
+    }
+
     @EventHandler
     public void onPlayerWearArmor(PlayerArmorChangeEvent event) {
         Player player = event.getPlayer();
