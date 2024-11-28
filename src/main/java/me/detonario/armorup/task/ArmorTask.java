@@ -122,10 +122,14 @@ public final class ArmorTask implements Runnable {
                                 .toList();
 
                         for (Entity entity : nearbyEntities) {
-                            Vector knockbackDirection = entity.getLocation().toVector().subtract(playerLocation.toVector()).normalize();
-
-                            entity.setVelocity(knockbackDirection.multiply(1));
+                            if (!(entity instanceof TNTPrimed)) {
+                                Vector knockbackDirection = entity.getLocation().toVector().subtract(playerLocation.toVector()).normalize();
+                                entity.setVelocity(knockbackDirection.multiply(1));
+                            }
+                            
                             entity.setMetadata("noDamage", new FixedMetadataValue(ArmorUp.getInstance(), true));
+
+
                         }
                     }
                 }.runTaskTimer(ArmorUp.getInstance(), 0, 1);

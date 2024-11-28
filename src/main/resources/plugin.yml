@@ -1,7 +1,7 @@
 name: ArmorUp
-version: '1.0-SNAPSHOT'
+version: '${project.version}'
 main: me.detonario.armorup.ArmorUp
-api-version: '1.21.1'
+api-version: '1.21.3'
 authors: [ Detonario ]
 description: A Minecraft plugin that introduces new custom armor, bows, and swords.
 commands:

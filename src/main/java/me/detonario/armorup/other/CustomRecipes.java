@@ -115,7 +115,7 @@ public final class CustomRecipes {
             meta.addItemFlags(ItemFlag.HIDE_DYE);
             meta.lore(lore);
             meta.addAttributeModifier(
-                    Attribute.GENERIC_ARMOR,
+                    Attribute.ARMOR,
                     new AttributeModifier(
                             new NamespacedKey(ArmorUp.getInstance(), "Armor"),
                             armorValues[i],
@@ -185,7 +185,7 @@ public final class CustomRecipes {
             meta.addItemFlags(ItemFlag.HIDE_DYE);
             meta.lore(lore);
             meta.addAttributeModifier(
-                    Attribute.GENERIC_ARMOR,
+                    Attribute.ARMOR,
                     new AttributeModifier(
                             new NamespacedKey(ArmorUp.getInstance(), "Armor"),
                             armorValues[i],
@@ -193,7 +193,7 @@ public final class CustomRecipes {
                     )
             );
             meta.addAttributeModifier(
-                    Attribute.GENERIC_ARMOR_TOUGHNESS,
+                    Attribute.ARMOR_TOUGHNESS,
                     new AttributeModifier(
                             new NamespacedKey(ArmorUp.getInstance(), "ArmorToughness"),
                             2,
@@ -319,7 +319,7 @@ public final class CustomRecipes {
             meta.addItemFlags(ItemFlag.HIDE_DYE);
             meta.lore(lore);
             meta.addAttributeModifier(
-                    Attribute.GENERIC_ARMOR,
+                    Attribute.ARMOR,
                     new AttributeModifier(
                             new NamespacedKey(ArmorUp.getInstance(), "Armor"),
                             armorValues[i],
@@ -448,7 +448,7 @@ public final class CustomRecipes {
             meta.addItemFlags(ItemFlag.HIDE_DYE);
             meta.lore(lore);
             meta.addAttributeModifier(
-                    Attribute.GENERIC_ARMOR,
+                    Attribute.ARMOR,
                     new AttributeModifier(
                             new NamespacedKey(ArmorUp.getInstance(), "Armor"),
                             armorValues[i],
@@ -574,7 +574,7 @@ public final class CustomRecipes {
             meta.addItemFlags(ItemFlag.HIDE_DYE);
             meta.lore(lore);
             meta.addAttributeModifier(
-                    Attribute.GENERIC_ARMOR,
+                    Attribute.ARMOR,
                     new AttributeModifier(
                             new NamespacedKey(ArmorUp.getInstance(), "Armor"),
                             armorValues[i],

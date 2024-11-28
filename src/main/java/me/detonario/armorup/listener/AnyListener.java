@@ -20,6 +20,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -63,9 +64,9 @@ public final class AnyListener implements Listener {
             Material.NETHER_GOLD_ORE
     );
 
-
     private AnyListener() {
     }
+    
 
     @EventHandler
     public void onPlayerBreakBlock(BlockBreakEvent event) {
@@ -84,6 +85,16 @@ public final class AnyListener implements Listener {
                     dropItem.setAmount(2 + new Random().nextInt(4));
                     block.getWorld().dropItemNaturally(block.getLocation(), dropItem);
                 }
+            }
+        }
+    }
+
+
+    @EventHandler
+    public void onFallDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            if (event.getCause() == EntityDamageEvent.DamageCause.FALL && airCooldowns.containsKey(player.getUniqueId())) {
+                event.setCancelled(true);
             }
         }
     }
